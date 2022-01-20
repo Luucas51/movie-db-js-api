@@ -1,0 +1,99 @@
+form{
+    margin: auto;
+}
+
+.search-bar{
+    margin-left: 30px;
+    margin-top: 5px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 600px;
+    height: 30px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    font-size: 20px;
+    padding-inline-start: 10px;
+}
+
+.search-bar:hover {
+    border: 3px solid blue;
+}
+
+.title{
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+
+.submit-btn{
+    height: 30px;
+    width: 100px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border: solid 2px black;
+}
+
+.submit-btn:hover{
+    background-color: rgb(109, 109, 211);
+    color: black;
+    cursor: pointer;
+    border: solid 2px black;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.popup-block{
+    display: none;
+    flex-direction: row;
+    width: 700px;
+    height: 300px;
+    border: 2px solid black;
+    align-self: center;
+    top: 30%;
+    position: fixed;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.poster-place{
+    border: solid 1px black;
+    border-radius: 10px;
+    width: 200px;
+    height: auto;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.title-popup{
+    margin-left: 30px;
+}
+
+.year-popup{
+    margin-top: 100px;
+    margin-left: -135px;
+}
+
+.plot {
+    margin-top: 160px;
+    margin-left: -45px;
+}
+
+.close-btn {
+    margin-left: 30px;
+    cursor: pointer;
+}
