@@ -39,7 +39,7 @@ const getId = async (valueOfSearchBar) => {
         console.error(error.message);
     }
 }
-
+ 
 const getMovie = async (valueOfSearchBar, counterPage=1) => {
     let getResult = [];
     try {
