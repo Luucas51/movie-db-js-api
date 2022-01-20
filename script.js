@@ -6,7 +6,7 @@ let moreBtn = document.querySelectorAll('.more-btn');
 let closeBtn = document.querySelector('.close-btn');
 let posterPlace = document.querySelector('.poster-place');
 let titlePopup = document.querySelector('.title-popup');
-let yearDiv = document.querySelector('.year-popup');
+let yearDiv = document.querySelector('.year-popup'); 
 let plotDiv = document.querySelector('.plot');
 let genreDiv = document.querySelector('.genre');
 let directorDiv = document.querySelector('.director');
@@ -34,7 +34,7 @@ const getId = async (valueOfSearchBar) => {
         directorDiv.innerHTML=`<p>Director : ${responseMovie.Director}</p>`
         writerDiv.innerHTML=`<p>Writer : ${responseMovie.Writer}</p>`
         console.log(responseMovie)
-
+        
     } catch(error){
         console.error(error.message);
     }
@@ -53,9 +53,32 @@ const getMovie = async (valueOfSearchBar, counterPage=1) => {
         console.error(error.message)
     }
     
-    
-
     displayOnHtml(getResult, counterPage);
+
+
+    let observer = new IntersectionObserver(function (observables){
+        observables.forEach(function (observable){
+            if(observable.intersectionRatio > 0.5){
+                observable.target.classList.remove('not-visible');
+                observer.unobserve(observable.target)
+                console.log('Visible card')
+            } else {
+                observable.target.classList.add('not-visible');
+            }
+        })
+        
+
+    }, {
+        threshold: [0.5]
+    })
+    
+    let cardResult = document.querySelectorAll('.card');
+
+    cardResult.forEach(function (card) {
+        card.classList.add('not-visible');
+        observer.observe(card)
+    })
+
     moreBtn = document.querySelectorAll('.more-btn');
     popupDiv = document.querySelector('.popup-block');
     closeBtn = document.querySelector('.close-btn')
@@ -83,29 +106,34 @@ const getMovie = async (valueOfSearchBar, counterPage=1) => {
     })
 }
 
+
 const displayOnHtml = (getResult) => {
-    //displayResult.innerHTML='';
     getResult.forEach(element => {
-        console.log('test')
+        
+        
         displayResult.innerHTML+=`
-        <div class='card'>
-            <img src="${element.Poster}" class='pos-poster-main'>
-            <div class='pos-text-main'>
-            <h1 class='pos-title-main'>Title : ${element.Title}</h1>
+            <div class='card'>
+                <img src="${element.Poster}" class='pos-poster-main'>
+                <div class='pos-text-main'>
+                <h1 class='pos-title-main'>Title : ${element.Title}</h1>
                 <p class='pos-year-main'>Year : ${element.Year}</p>
                 <button class="more-btn">More</button>
-            </div>
+                </div>
             </div>
             `
         })
-}
-
-
-
-window.onscroll = function() {
-    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight){
-        //displayResult.innerHTML='';
-        getMovie(searchBar.value, counterPage);
-        counterPage++;
     }
-}
+    
+    
+    
+    window.onscroll = function() {
+        if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight){
+            //displayResult.innerHTML='';
+            getMovie(searchBar.value, counterPage);
+            counterPage++;
+        }
+    }
+    
+    
+    
+    
