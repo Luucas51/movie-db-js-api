@@ -48,52 +48,100 @@ form{
 body{
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 
 .popup-block{
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    top: 30%;
     display: none;
     flex-direction: row;
-    width: 700px;
-    height: 300px;
+    max-width: 1200px;
     border: 2px solid black;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.text-pop{
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+    padding: 40px;
+    border: solid 2px black;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.pos-poster-main{
+}
+
+.pos-year-main{
     align-self: center;
-    top: 30%;
-    position: fixed;
-    background-color: rgb(240, 240, 240);
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.poster-place{
-    border: solid 1px black;
-    border-radius: 10px;
-    width: 200px;
-    height: auto;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.title-popup{
-    margin-left: 30px;
-}
-
-.year-popup{
     margin-top: 100px;
-    margin-left: -135px;
+    margin-left: 10px;
+    font-size: 20px;
 }
 
-.plot {
-    margin-top: 160px;
-    margin-left: -45px;
+.pos-title-main{
+}
+
+.pos-text-main{
+}
+
+.more-btn{
+    width: 200px;
+    height: 30px;
+    border: solid 1px black;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    background-color: blue;
+    color: white;
+    margin-top: auto;
+    margin-left: 10px;
+}
+
+.more-btn:hover{
+    background-color: white;
+    cursor: pointer;
+    color: black;
 }
 
 .close-btn {
     margin-left: 30px;
     cursor: pointer;
 }
+
+.modal-bg {
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
