@@ -23,9 +23,8 @@ btnSubmit.addEventListener('click', e => {
 
 
 const getId = async (valueOfSearchBar) => {
-    const apikey = '5487ca59';
     try {
-        const responseId = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&i=${valueOfSearchBar}&plot=full`);
+        const responseId = await fetch(`https://www.omdbapi.com/?apikey=5487ca59&i=${valueOfSearchBar}&plot=full`);
         const responseMovie = await responseId.json();
         posterPlace.innerHTML=`<img src='${responseMovie.Poster}' class="poster-place">`
         titlePopup.innerHTML=`<h1>${responseMovie.Title}</h1>`
@@ -44,7 +43,7 @@ const getId = async (valueOfSearchBar) => {
 const getMovie = async (valueOfSearchBar, counterPage=1) => {
     let getResult = [];
     try {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${valueOfSearchBar}&plot=full&page=${counterPage}`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=5487ca59&s=${valueOfSearchBar}&plot=full&page=${counterPage}`)
         const responseData = await response.json();
         
         responseData.Search.forEach(movie => {
