@@ -43,7 +43,7 @@ const getId = async (valueOfSearchBar) => {
 const getMovie = async (valueOfSearchBar, counterPage=1) => {
     let getResult = [];
     try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=5487ca59&s=${valueOfSearchBar}&plot=full&page=${counterPage++}`)
+        const response = await fetch(`http://www.omdbapi.com/?apikey=5487ca59&s=${valueOfSearchBar}&plot=full&page=${counterPage}`)
         const responseData = await response.json();
         
         responseData.Search.forEach(movie => {
@@ -84,7 +84,7 @@ const getMovie = async (valueOfSearchBar, counterPage=1) => {
 }
 
 const displayOnHtml = (getResult) => {
-    displayResult.innerHTML='';
+    //displayResult.innerHTML='';
     getResult.forEach(element => {
         console.log('test')
         displayResult.innerHTML+=`
@@ -104,7 +104,7 @@ const displayOnHtml = (getResult) => {
 
 window.onscroll = function() {
     if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight){
-        displayResult.innerHTML='';
+        //displayResult.innerHTML='';
         getMovie(searchBar.value, counterPage);
         counterPage++;
     }
