@@ -12,6 +12,7 @@ let genreDiv = document.querySelector('.genre');
 let directorDiv = document.querySelector('.director');
 let writerDiv = document.querySelector('.writer');
 let modalBackground = document.querySelector('.modal-bg');
+let counterPage = 2;
 
 
 btnSubmit.addEventListener('click', e => {
@@ -39,10 +40,10 @@ const getId = async (valueOfSearchBar) => {
     }
 }
 
-const getMovie = async (valueOfSearchBar) => {
+const getMovie = async (valueOfSearchBar, counterPage=1) => {
     let getResult = [];
     try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=5487ca59&s=${valueOfSearchBar}&plot=full`)
+        const response = await fetch(`http://www.omdbapi.com/?apikey=5487ca59&s=${valueOfSearchBar}&plot=full&page=${counterPage}`)
         const responseData = await response.json();
         
         responseData.Search.forEach(movie => {
@@ -54,7 +55,7 @@ const getMovie = async (valueOfSearchBar) => {
     
     
 
-    displayOnHtml(getResult);
+    displayOnHtml(getResult, counterPage);
     moreBtn = document.querySelectorAll('.more-btn');
     popupDiv = document.querySelector('.popup-block');
     closeBtn = document.querySelector('.close-btn')
@@ -62,7 +63,7 @@ const getMovie = async (valueOfSearchBar) => {
     titlePopup = document.querySelector('.title-popup');
     yearDiv = document.querySelector('.year-popup');
     plotDiv = document.querySelector('.plot');
-
+    
     moreBtn.forEach(element => {
         element.addEventListener('click', e => {
             let btnIndex = Array.from(moreBtn).indexOf(e.target);
@@ -73,7 +74,7 @@ const getMovie = async (valueOfSearchBar) => {
             }
         })
     })
-
+    
     closeBtn.addEventListener('click', () => {
         if(popupDiv.style.display='flex'){
             popupDiv.style.display='none';
@@ -89,12 +90,18 @@ const displayOnHtml = (getResult) => {
         <div class='card'>
             <img src="${element.Poster}" class='pos-poster-main'>
             <div class='pos-text-main'>
-                <h1 class='pos-title-main'>Title : ${element.Title}</h1>
+            <h1 class='pos-title-main'>Title : ${element.Title}</h1>
                 <p class='pos-year-main'>Year : ${element.Year}</p>
                 <button class="more-btn">More</button>
             </div>
-        </div>
-        `
-    })
+            </div>
+            `
+        })
 }
-
+window.onscroll = function() {
+    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight){
+        displayResult.innerHTML='';
+        getMovie(searchBar.value, counterPage);
+        counterPage++;
+    }
+}

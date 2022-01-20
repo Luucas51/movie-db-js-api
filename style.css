@@ -94,20 +94,11 @@ body{
     -o-border-radius: 20px;
 }
 
-.pos-poster-main{
-}
-
 .pos-year-main{
     align-self: center;
     margin-top: 100px;
     margin-left: 10px;
     font-size: 20px;
-}
-
-.pos-title-main{
-}
-
-.pos-text-main{
 }
 
 .more-btn{
@@ -144,4 +135,4 @@ body{
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
-  }
+}
